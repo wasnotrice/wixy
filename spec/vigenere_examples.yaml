@@ -7,6 +7,10 @@ basic:
   cleartext:  " d e "
   ciphertext: "IS"
   key: fortification
+-
+  cleartext:  def
+  ciphertext: ISW
+  key: fortification
 # -
 #   cleartext:  defendtheeastwallofthecastle
 #   ciphertext: ISWXVIBJEXIGGBOCEWKBJEVIGGQS

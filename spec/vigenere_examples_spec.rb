@@ -4,16 +4,14 @@ require 'yaml'
 module ExampleHelpers
   def load_examples(group)
     examples = YAML.load(File.read(File.join(File.dirname(__FILE__), 'vigenere_examples.yaml')))
-    puts examples
     examples[group.to_s]
   end
 end
 
 describe "Vigenere" do
+  extend ExampleHelpers
 
   describe "basic" do
-    extend ExampleHelpers
-
     load_examples("basic").each do |example|
       let(:vigenere) { Vigenere.new(example["key"]) }
       it "converts from '#{example['cleartext']}' to '#{example['ciphertext']}'" do
