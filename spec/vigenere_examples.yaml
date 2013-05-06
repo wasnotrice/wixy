@@ -1,0 +1,83 @@
+basic:
+-
+  cleartext:  de
+  ciphertext: IS
+  key: fortification
+-
+  cleartext:  " d e "
+  ciphertext: "IS"
+  key: fortification
+# -
+#   cleartext:  defendtheeastwallofthecastle
+#   ciphertext: ISWXVIBJEXIGGBOCEWKBJEVIGGQS
+
+#   it "discards punctuation" do
+
+#     result = Vigenere.encrypt('`~!@#$%^d&*()_-=+|]}[{e\;:/?>.,<', @key)
+#     expect(result).to eq("IS")
+#   end
+
+#   it "discards numbers" do
+#     expect(Vigenere.encrypt("0123456789", @key)).to eq("")
+#   end
+
+#   it "converts empty string to empty string" do
+#     expect(Vigenere.encrypt("", @key)).to eq("")
+#   end
+
+#   describe "with a pangram cleartext" do
+#     before do
+#       @cleartext = "FORSAKINGMONASTICTRADITIONTWELVEJOVIALFRIARSGAVEUPTHEIRVOCATIONFORAQUESTIONABLEEXISTENCEONTHEFLYINGTRAPEZE"
+#       @ciphertext = "KCILIPQPGFWBNXHZVBWIFIMQCAYKVEDJRQVBIZSWWRKALIXENXHUJWIOWHIVIHVTBWOHNMXBKOGIPYJSOBAYMPCXWBGMSWEGNVITKIDRES"
+#     end
+
+#     it "encrypts ignoring spaces and punctuation" do
+#       cleartext = "Forsaking monastic tradition, twelve jovial friars gave up their vocation for a questionable existence on the flying trapeze."
+#       result = Vigenere.encrypt(cleartext, @key)
+#       expect(result).to eq(@ciphertext)
+#     end
+
+#     it "decrypts" do
+#       result = Vigenere.decrypt(@ciphertext, @key)
+#       expect(result).to eq(@cleartext)
+#     end
+
+#     it "roundtrips" do
+#       intermediate = Vigenere.encrypt(@cleartext, @key)
+#       result = Vigenere.decrypt(intermediate, @key)
+#       expect(result).to eq(@cleartext)
+#     end
+
+#     # default key = 'SUSHIFROGGY'
+#     describe "using the default key" do
+#       before do
+#         @ciphertext = "XIJZIPZBMSMFUKAQHKFGJGLCGUBBVZBKHGPAHTKIWGXQYUNLCUKVKOPNIUHBNFBLUPSKMLAYZCTGZDYWEQXKSTICGHLOMKCMOTELLSWMEV"
+#       end
+
+#       it "uses default if no key is given" do
+#         result = Vigenere.encrypt(@cleartext)
+#         expect(result).to eq(@ciphertext)
+#       end
+
+#       it "decrypts" do
+#         result = Vigenere.decrypt(@ciphertext)
+#         expect(result).to eq(@cleartext)
+#       end
+
+#       it "roundtrips" do
+#         intermediate = Vigenere.encrypt(@cleartext)
+#         result = Vigenere.decrypt(intermediate)
+#         expect(result).to eq(@cleartext)
+#       end
+#     end
+
+#     describe "decrypting" do
+#       it "decrypts 'defendtheeastwallofthecastle' to 'ISWXVIBJEXIGGBOCEWKBJEVIGGQS'" do
+#         cleartext = "defendtheeastwallofthecastle"
+#         ciphertext = "ISWXVIBJEXIGGBOCEWKBJEVIGGQS"
+#         result = Vigenere.decrypt(ciphertext, @key)
+#         expect(result).to eq(cleartext.toUpperCase())
+#       end
+#     end
+#   end
+# end
