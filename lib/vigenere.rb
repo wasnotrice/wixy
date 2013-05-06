@@ -15,7 +15,8 @@ class Vigenere
   def lookup(char, position)
     char_index = index_of(char.upcase)
     if char_index
-      @alphabet[char_index + index_of(@key[position])]
+      key_index = index_of(@key[position % @key.length])
+      @alphabet[(char_index + key_index) % @alphabet.length]
     end
   end
 

@@ -1,45 +1,41 @@
-basic:
--
-  cleartext:  de
+---
+# Basic encryption examples
+- 
   ciphertext: IS
+  cleartext: de
+  key: fortification
+- 
+  ciphertext: IS
+  cleartext: " d e "
+  key: fortification
+- 
+  ciphertext: IS
+  cleartext: "`~!@#$%^d&*()_-=+|]}[{e;:/?>.,<'\\\""
   key: fortification
 -
-  cleartext:  " d e "
-  ciphertext: "IS"
+  cleartext:  "123456789"
+  ciphertext: ""
+  key: fortification
+-
+  cleartext:  ""
+  ciphertext: ""
   key: fortification
 -
   cleartext:  def
   ciphertext: ISW
   key: fortification
-# -
-#   cleartext:  defendtheeastwallofthecastle
-#   ciphertext: ISWXVIBJEXIGGBOCEWKBJEVIGGQS
-
-#   it "discards punctuation" do
-
-#     result = Vigenere.encrypt('`~!@#$%^d&*()_-=+|]}[{e\;:/?>.,<', @key)
-#     expect(result).to eq("IS")
-#   end
-
-#   it "discards numbers" do
-#     expect(Vigenere.encrypt("0123456789", @key)).to eq("")
-#   end
-
-#   it "converts empty string to empty string" do
-#     expect(Vigenere.encrypt("", @key)).to eq("")
-#   end
-
-#   describe "with a pangram cleartext" do
-#     before do
-#       @cleartext = "FORSAKINGMONASTICTRADITIONTWELVEJOVIALFRIARSGAVEUPTHEIRVOCATIONFORAQUESTIONABLEEXISTENCEONTHEFLYINGTRAPEZE"
-#       @ciphertext = "KCILIPQPGFWBNXHZVBWIFIMQCAYKVEDJRQVBIZSWWRKALIXENXHUJWIOWHIVIHVTBWOHNMXBKOGIPYJSOBAYMPCXWBGMSWEGNVITKIDRES"
-#     end
-
-#     it "encrypts ignoring spaces and punctuation" do
-#       cleartext = "Forsaking monastic tradition, twelve jovial friars gave up their vocation for a questionable existence on the flying trapeze."
-#       result = Vigenere.encrypt(cleartext, @key)
-#       expect(result).to eq(@ciphertext)
-#     end
+-
+  cleartext:  defendtheeastwallofthecastle
+  ciphertext: ISWXVIBJEXIGGBOCEWKBJEVIGGQS
+  key: fortification
+-
+  cleartext: "Forsaking monastic tradition, twelve jovial friars gave up their vocation for a questionable existence on the flying trapeze."
+  ciphertext: "KCILIPQPGFWBNXHZVBWIFIMQCAYKVEDJRQVBIZSWWRKALIXENXHUJWIOWHIVIHVTBWOHNMXBKOGIPYJSOBAYMPCXWBGMSWEGNVITKIDRES"
+  key: fortification
+-
+  cleartext: "FORSAKINGMONASTICTRADITIONTWELVEJOVIALFRIARSGAVEUPTHEIRVOCATIONFORAQUESTIONABLEEXISTENCEONTHEFLYINGTRAPEZE"
+  ciphertext: "KCILIPQPGFWBNXHZVBWIFIMQCAYKVEDJRQVBIZSWWRKALIXENXHUJWIOWHIVIHVTBWOHNMXBKOGIPYJSOBAYMPCXWBGMSWEGNVITKIDRES"
+  key: fortification
 
 #     it "decrypts" do
 #       result = Vigenere.decrypt(@ciphertext, @key)
