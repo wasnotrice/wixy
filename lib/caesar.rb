@@ -17,12 +17,14 @@ class Alphabet
     text.upcase.chars.map { |c| char_if_present(c) }.compact
   end
 
-  def substitute(char, other_alphabet)
-    other_alphabet[index(char)]
+  # Given a char and another alphabet, find the char in this alphabet
+  # at the corresponding index in this alphabet
+  def char(char, other_alphabet)
+    self[other_alphabet.index(char)]
   end
 
   def to_s
-    "<Alphabet '#{@chars.join}'>"
+    "<Alphabet:[#{@chars.join}]>"
   end
 
   private
@@ -36,8 +38,6 @@ class Caesar
   def initialize(shift)
     @text_alphabet = Alphabet.new ("A".."Z")
     @cipher_alphabet = Alphabet.new ("A".."Z"), shift: shift
-    puts "text: #{@text_alphabet}"
-    puts "text: #{@cipher_alphabet}"
   end
 
 
@@ -52,7 +52,7 @@ class Caesar
   private
   def substitute(text, source_alphabet, target_alphabet)
     source_alphabet.sanitized_chars(text).map do |char|
-      source_alphabet.substitute(char, target_alphabet)
+      target_alphabet.char(char, source_alphabet)
     end.join
   end
 end
