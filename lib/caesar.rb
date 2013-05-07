@@ -18,7 +18,7 @@ class Alphabet
   end
 
   # Given a char and another alphabet, find the char in this alphabet
-  # at the corresponding index in this alphabet
+  # at the corresponding index
   def char(char, other_alphabet)
     self[other_alphabet.index(char)]
   end
