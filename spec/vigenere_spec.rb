@@ -1,24 +1,17 @@
 require 'vigenere'
-require 'yaml'
-
-module ExampleHelpers
-  def filename_for(group)
-    "vigenere_examples_#{group}.yaml"
-  end
-
-  def load_examples(group)
-    examples = YAML.load(File.read(File.join(File.dirname(__FILE__), filename_for(group))))
-  end
-end
+require 'example_helper'
 
 describe "Vigenere" do
   extend ExampleHelpers
 
-  describe "basic" do
-    load_examples("basic_encryption").each do |example|
-      let(:vigenere) { Vigenere.new(example["key"]) }
-      it "encrypts '#{example['cleartext']}' to '#{example['ciphertext']}'" do
-        expect(vigenere.encrypt example["cleartext"]).to eq(example["ciphertext"])
+  describe "#encrypt" do
+    load_examples("vigenere", "encrypt").each do |example|
+      describe "'#{example['cleartext']}'" do
+        let(:vigenere) { Vigenere.new(example["key"]) }
+        it "produces '#{example['ciphertext']}'" do
+          result = vigenere.encrypt example["cleartext"]
+          expect(result).to eq(example["ciphertext"])
+        end
       end
     end
   end
