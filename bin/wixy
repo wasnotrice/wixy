@@ -18,15 +18,15 @@ parser = OptionParser.new do |opts|
     options.encrypt = e
   end
 
-  opts.on("-d", "--decrypt", "Decrypt text") do |d|
-    options.decrypt = d
-  end
-
   cipher_names = Wixy::CIPHERS.map(&:to_s)
     .map {|c| "  - [#{c[0]}]#{c[1,c.length-1]}"}
 
   opts.on("-c", "--cipher CIPHER", Wixy::CIPHERS, "Use CIPHER", *cipher_names) do |c|
     options.cipher = c.to_sym
+  end
+
+  opts.on("-d", "--decrypt", "Decrypt text") do |d|
+    options.decrypt = d
   end
 
   opts.on_tail("-h", "--help", "Show this message") do
