@@ -36,9 +36,9 @@ module Wixy
 
 
   class Caesar
-    def initialize(shift = 3)
+    def initialize(config = Config.new)
       @text_alphabet = Alphabet.new ("A".."Z")
-      @cipher_alphabet = Alphabet.new ("A".."Z"), shift: shift
+      @cipher_alphabet = Alphabet.new ("A".."Z"), shift: config.shift
     end
 
 
