@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require 'ostruct'
+require_relative '../lib/wixy'
+
+options = OpenStruct.new
+
+# Defaults
+options.encrypt = true
+options.decrypt = false
+options.mode = :encrypt
+options.cipher = :caesar
+
+begin
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options] TEXT"
+  opts.on("-e", "--encrypt", "Encrypt text (default)") do |e|
+    options.encrypt = e
+  end
+
+  opts.on("-d", "--decrypt", "Decrypt text") do |d|
+    options.decrypt = d
+  end
+
+  cipher_names = Wixy::CIPHERS.map(&:to_s)
+    .map {|c| "  - [#{c[0]}]#{c[1,c.length-1]}"}
+
+  opts.on("-c", "--cipher CIPHER", Wixy::CIPHERS, "Use CIPHER", *cipher_names) do |c|
+    options.cipher = c.to_sym
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "Show version") do
+    puts Wixy::VERSION
+    exit
+  end
+end.parse!
+rescue => e
+  abort e.message
+end
+
+text = ARGV.pop
+abort(parser) unless text
+options.mode = :decrypt if options.decrypt
+cipher = Wixy.const_get(options.cipher.capitalize).new
+result = cipher.public_send(options.mode, text)
+puts result
