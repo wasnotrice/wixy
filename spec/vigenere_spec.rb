@@ -1,5 +1,7 @@
-require 'vigenere'
+require 'wixy/vigenere'
 require 'example_helper'
+
+include Wixy
 
 describe "Vigenere" do
   extend ExampleHelpers

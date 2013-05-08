@@ -1,5 +1,7 @@
 require 'example_helper'
-require 'caesar'
+require 'wixy/caesar'
+
+include Wixy
 
 describe "Caesar" do
   extend ExampleHelpers

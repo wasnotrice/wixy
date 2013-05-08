@@ -1,7 +1,8 @@
-require 'bifid'
+require 'wixy/bifid'
+
 
 describe 'Bifid' do
-  let(:bifid) { Bifid.new }
+  let(:bifid) { Wixy::Bifid.new }
   it "encrypts '' to ''" do
     result = bifid.encrypt('')
     expect(result).to eq('')
@@ -13,4 +14,6 @@ describe 'Bifid' do
     result = bifid.encrypt('F')
     expect(result).to eq('F')
   end
+
+  it "encrypts 'FO' to "
 end
