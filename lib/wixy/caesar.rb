@@ -1,3 +1,5 @@
+require_relative 'config'
+
 module Wixy
   class Alphabet
     # chars is an array of character strings, like ["A", "B", "C" ...]

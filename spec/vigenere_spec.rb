@@ -9,7 +9,12 @@ describe "Vigenere" do
   describe "#encrypt" do
     load_examples("vigenere", "encrypt").each do |example|
       describe "'#{example['cleartext']}'" do
-        let(:vigenere) { Vigenere.new(example["key"]) }
+        let(:config) {
+          ::Wixy::Config.new do |config|
+            config.key = example['key']
+          end
+        }
+        let(:vigenere) { Vigenere.new(config) }
         it "produces '#{example['ciphertext']}'" do
           result = vigenere.encrypt example["cleartext"]
           expect(result).to eq(example["ciphertext"])

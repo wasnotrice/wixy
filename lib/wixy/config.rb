@@ -1,12 +1,15 @@
 module Wixy
   class Config
     attr_accessor :cipher
+    attr_accessor :key
     attr_accessor :shift
     attr_reader :ciphers
 
     def initialize
       @ciphers = Ciphers.new
       @shift = 3
+      @key = "FORTIFICATION"
+      yield self if block_given?
     end
 
     def cipher=c

@@ -1,8 +1,11 @@
+require_relative 'config'
+
 module Wixy
   class Vigenere
-    def initialize(key = "SUSHIFROGGY")
+    def initialize(config = Config.new)
+      @config = config
       @alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.chars
-      @key = clean(key)
+      @key = clean(config.key)
     end
 
     def encrypt(cleartext)

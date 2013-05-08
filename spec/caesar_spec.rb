@@ -9,7 +9,12 @@ describe "Caesar" do
   describe "#encrypt" do
     load_examples("caesar", "encrypt").each do |example|
       describe "'#{example['cleartext']}'" do
-        let(:caesar) { Caesar.new(example["shift"]) }
+        let(:config) {
+          ::Wixy::Config.new do |config|
+            config.shift = example["shift"]
+          end
+        }
+        let(:caesar) { Caesar.new(config) }
         it "produces '#{example['ciphertext']}'" do
           result = caesar.encrypt example["cleartext"]
           expect(result).to eq(example["ciphertext"])

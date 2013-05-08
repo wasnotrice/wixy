@@ -1,3 +1,5 @@
+require_relative 'config'
+
 module Wixy
   class Bifid
     def encrypt(text)
