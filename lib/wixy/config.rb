@@ -25,8 +25,6 @@ module Wixy
     end
 
     class Ciphers
-      CIPHERS = [:caesar, :vigenere]
-
       def [](name)
         ciphers.select {|c| c == name}.first
       end
@@ -35,20 +33,9 @@ module Wixy
         ciphers.include? name
       end
 
-      def names
-        ciphers.map { |c| name(c)}
-      end
-
-      def klass(name)
-        "::Wixy::#{name.to_s.capitalize}"
-      end
-
-      def name(klass)
-        klass.to_s.split("::").last.downcase.to_sym
-      end
-
+      private
       def ciphers
-        CIPHERS
+        [:caesar, :vigenere]
       end
     end
   end
