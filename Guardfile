@@ -4,7 +4,7 @@
 guard 'rspec' do
   watch(%r{^spec/.+examples\.yaml$}) { "spec" }
   watch(%r{^spec/.+_spec\.rb$})
-  watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch(%r{^lib/(.+/)*(.*).rb$})     { |m| "spec/#{m[2]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
 
   # Rails example
