@@ -1,14 +1,14 @@
 ---
 # Basic encryption examples
-- 
+-
   ciphertext: IS
   cleartext: de
   key: fortification
-- 
+-
   ciphertext: IS
   cleartext: " d e "
   key: fortification
-- 
+-
   ciphertext: IS
   cleartext: "`~!@#$%^d&*()_-=+|]}[{e;:/?>.,<'\\\""
   key: fortification
