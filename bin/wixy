@@ -20,7 +20,7 @@ parser = OptionParser.new do |opts|
     options.encrypt = e
   end
 
-  ciphers = Wixy::Config::Ciphers.new.names
+  ciphers = config.ciphers
   cipher_names = ciphers
     .map {|c| "  - [#{c[0]}]#{c[1,c.length-1]}"}
 

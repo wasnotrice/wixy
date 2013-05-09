@@ -3,40 +3,33 @@ module Wixy
     attr_accessor :cipher
     attr_accessor :key
     attr_accessor :shift
-    attr_reader :ciphers
 
     def initialize
-      @ciphers = Ciphers.new
-      @cipher = @ciphers[:caesar]
+      @cipher = :caesar
       @shift = 3
       @key = "FORTIFICATION"
       yield self if block_given?
     end
 
-    def cipher=c
-      unless ciphers.cipher?(c)
-        raise "Unknown cipher: #{c}. Choose from: #{ciphers.names.map(&:to_s).join(',')}"
+    def cipher=(name)
+      c = name.to_sym
+      unless cipher?(c)
+        raise "Unknown cipher: #{name}. Choose from: #{ciphers.join(', ')}"
       end
-      @cipher = ciphers[c]
+      @cipher = c
     end
 
     def shift=s
       @shift = s.to_i
     end
 
-    class Ciphers
-      def [](name)
-        ciphers.select {|c| c == name}.first
-      end
+    def cipher?(name)
+      ciphers.include? name.to_sym
+    end
 
-      def cipher?(name)
-        ciphers.include? name
-      end
-
-      private
-      def ciphers
-        [:caesar, :vigenere]
-      end
+    # An array of available ciphers
+    def ciphers
+      [:caesar, :vigenere]
     end
   end
 end
