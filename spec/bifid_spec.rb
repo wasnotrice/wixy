@@ -15,5 +15,8 @@ describe 'Bifid' do
     expect(result).to eq('F')
   end
 
-  it "encrypts 'FO' to "
+  it "encrypts 'FO' to 'HD'" do
+    result = bifid.encrypt('FO')
+    expect(result).to eq('HD')
+  end
 end

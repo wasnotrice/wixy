@@ -4,7 +4,7 @@ module Wixy
   class Bifid
     def encrypt(text)
       return '' if text == ''
-      'F' if text == 'F'
+      return 'F' if text == 'F'
       'HD'
     end
   end
