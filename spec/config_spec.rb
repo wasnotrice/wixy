@@ -3,8 +3,9 @@ require 'wixy/config'
 describe "Config" do
   describe "defaults" do
     subject(:config) { Wixy::Config.new }
-    its(:shift) { should eq(3) }
-    its(:key)   { should eq("FORTIFICATION") }
+    its(:shift)  { should eq(3) }
+    its(:key)    { should eq("FORTIFICATION") }
+    its(:cipher) { should eq(:caesar) }
   end
 
   context "with a block" do

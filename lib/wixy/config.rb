@@ -7,6 +7,7 @@ module Wixy
 
     def initialize
       @ciphers = Ciphers.new
+      @cipher = @ciphers[:caesar]
       @shift = 3
       @key = "FORTIFICATION"
       yield self if block_given?
@@ -24,20 +25,30 @@ module Wixy
     end
 
     class Ciphers
+      CIPHERS = [:caesar, :vigenere]
+
       def [](name)
-        Wixy::CIPHERS.select {|c| name(c) == name}.first
+        ciphers.select {|c| c == name}.first
       end
 
       def cipher?(name)
-        names.include? name
+        ciphers.include? name
       end
 
       def names
-        Wixy::CIPHERS.map { |c| name(c)}
+        ciphers.map { |c| name(c)}
+      end
+
+      def klass(name)
+        "::Wixy::#{name.to_s.capitalize}"
       end
 
       def name(klass)
         klass.to_s.split("::").last.downcase.to_sym
+      end
+
+      def ciphers
+        CIPHERS
       end
     end
   end

@@ -5,15 +5,17 @@ require_relative 'wixy/caesar'
 require_relative 'wixy/bifid'
 
 module Wixy
-  CIPHERS = [Bifid, Vigenere, Caesar]
-
   def self.encrypt(text, config = Config.new)
-    cipher = config.cipher.new(config)
-    cipher.encrypt(text)
+    new_cipher(config).encrypt(text)
   end
 
   def self.decrypt(text, config = Config.new)
-    cipher = config.cipher.new(config)
-    cipher.decrypt(text)
+    new_cipher(config).decrypt(text)
+  end
+
+  private
+  def self.new_cipher(config)
+    klass = config.cipher.to_s.capitalize
+    self.const_get(klass).new(config)
   end
 end
