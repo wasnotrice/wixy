@@ -6,7 +6,7 @@ module Wixy
     def initialize(config = Config.new)
       @config = config
       @alphabet = Alphabet.AZ
-      @key = @alphabet.sanitized_chars(config.key)
+      @key = @alphabet.sanitize(config.key)
     end
 
     def encrypt(text)
@@ -22,7 +22,7 @@ module Wixy
     end
 
     def lookup_with_shift(text, shift)
-      cleaned = @alphabet.sanitized_chars(text)
+      cleaned = @alphabet.sanitize(text)
       cleaned.each_with_index.map do |char, i|
         lookup(char, i, shift)
       end.compact.join

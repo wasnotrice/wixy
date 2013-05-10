@@ -18,7 +18,7 @@ module Wixy
 
     private
     def substitute(text, source_alphabet, target_alphabet)
-      source_alphabet.sanitized_chars(text).map do |char|
+      source_alphabet.sanitize(text).map do |char|
         target_alphabet.char(char, source_alphabet)
       end.join
     end

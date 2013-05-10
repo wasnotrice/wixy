@@ -23,8 +23,13 @@ module Wixy
       @filters.inject(char) { |c, f| c.public_send(f) }
     end
 
-    def sanitized_chars(text)
-      text.upcase.chars.map { |c| char_if_present(c) }.compact
+    def sanitize(text_or_chars)
+      chars = if text_or_chars.respond_to?(:chars)
+                text_or_chars.chars
+              else
+                text_or_chars
+              end
+      chars.map {|c| filtered(c) }.map { |c| char_if_present(c) }.compact
     end
 
     # Given a char and another alphabet, find the char in this alphabet
