@@ -5,7 +5,7 @@ module Wixy
   class Vigenere
     def initialize(config = Config.new)
       @config = config
-      @alphabet = Alphabet.new ('A'..'Z')
+      @alphabet = Alphabet.AZ
       @key = @alphabet.sanitized_chars(config.key)
     end
 

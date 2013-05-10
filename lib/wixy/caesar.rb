@@ -4,10 +4,9 @@ require_relative 'alphabet'
 module Wixy
   class Caesar
     def initialize(config = Config.new)
-      @text_alphabet = Alphabet.new ("A".."Z")
-      @cipher_alphabet = Alphabet.new ("A".."Z"), shift: config.shift
+      @text_alphabet = Alphabet.AZ
+      @cipher_alphabet = Alphabet.AZ shift: config.shift
     end
-
 
     def encrypt(text)
       substitute(text, @text_alphabet, @cipher_alphabet)
