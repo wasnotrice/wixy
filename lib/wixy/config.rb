@@ -3,11 +3,13 @@ module Wixy
     attr_accessor :cipher
     attr_accessor :key
     attr_accessor :shift
+    attr_accessor :preserve
 
     def initialize
       @cipher = :caesar
       @shift = 3
       @key = "FORTIFICATION"
+      @preserve = false
       yield self if block_given?
     end
 

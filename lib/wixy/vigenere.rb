@@ -29,7 +29,8 @@ module Wixy
     end
 
     def solve(text, shift)
-      recurse(text.chars, 0, shift).reverse.join
+      result = recurse(text.chars, 0, shift).reverse
+      discard_or_not(result).join
     end
 
     def recurse(text, i, shift)
@@ -42,11 +43,20 @@ module Wixy
       end
     end
 
+    def discard_or_not(chars)
+      preserve? ? chars : @alphabet.sanitize(chars)
+    end
+
     def lookup(char, position, shift)
       index = @alphabet.index(char.upcase)
       offset = @alphabet.index(@key[position % @key.length])
       new_index = shift.call(index, offset)
       @alphabet[new_index]
+    end
+
+    private
+    def preserve?
+      @config.preserve
     end
   end
 end

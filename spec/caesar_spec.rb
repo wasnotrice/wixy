@@ -7,7 +7,7 @@ describe "Caesar" do
   extend ExampleHelpers
 
   describe "#encrypt" do
-    load_examples("caesar", "encrypt").each do |example|
+    load_examples("caesar", "encrypt", "discard").each do |example|
       describe "'#{example['cleartext']}'" do
         let(:config) {
           ::Wixy::Config.new do |config|
