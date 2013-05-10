@@ -6,19 +6,25 @@ include Wixy
 describe "Vigenere" do
   extend ExampleHelpers
 
-  describe "#encrypt" do
-    load_examples("vigenere", "encrypt").each do |example|
-      describe "'#{example['cleartext']}'" do
-        let(:config) {
-          ::Wixy::Config.new do |config|
-            config.key = example['key']
-          end
-        }
-        let(:vigenere) { Vigenere.new(config) }
-        it "produces '#{example['ciphertext']}'" do
-          result = vigenere.encrypt example["cleartext"]
-          expect(result).to eq(example["ciphertext"])
+  load_examples("vigenere", "encrypt").each do |e|
+    describe "'#{e['cleartext']}' <-> '#{e['ciphertext']}'" do
+      let(:config) {
+        ::Wixy::Config.new do |config|
+          config.key = e['key']
         end
+      }
+      let(:cleartext) { e['cleartext'] }
+      let(:ciphertext) { e['ciphertext'] }
+      let(:vigenere) { Vigenere.new(config) }
+
+      it "encrypts" do
+        result = vigenere.encrypt e['cleartext']
+        expect(result).to eq(e['ciphertext'])
+      end
+
+      it "decrypts" do
+        result = vigenere.decrypt e['ciphertext']
+        expect(result).to eq(e['cleartext'])
       end
     end
   end

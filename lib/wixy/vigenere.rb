@@ -1,36 +1,35 @@
 require_relative 'config'
+require_relative 'alphabet'
 
 module Wixy
   class Vigenere
+    ENCRYPT = 1
+    DECRYPT = -1
+
     def initialize(config = Config.new)
       @config = config
-      @alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.chars
-      @key = clean(config.key)
+      @alphabet = Alphabet.new ('A'..'Z')
+      @key = @alphabet.sanitized_chars(config.key)
     end
 
-    def encrypt(cleartext)
-      cleaned = clean(cleartext)
+    def encrypt(text)
+      cleaned = @alphabet.sanitized_chars(text)
       cleaned.each_with_index.map do |char, i|
-        lookup(char, i)
+        lookup(char, i, ENCRYPT)
       end.compact.join
     end
 
-    def lookup(char, position)
-      char_index = index_of(char.upcase)
-      if char_index
-        key_index = index_of(@key[position % @key.length])
-        @alphabet[(char_index + key_index) % @alphabet.length]
-      end
+    def decrypt(text)
+      cleaned = @alphabet.sanitized_chars(text)
+      cleaned.each_with_index.map do |char, i|
+        lookup(char, i, DECRYPT)
+      end.compact.join
     end
 
-    def index_of(character)
-      @character_map ||= @alphabet.each_with_index.each_with_object({}) { |(c, i), map| map[c] = i }
-      @character_map[character]
-    end
-
-    private
-    def clean(text)
-      text.upcase.each_char.map { |c| index_of(c) ? c : nil }.compact
+    def lookup(char, position, direction)
+      index = @alphabet.index(char.upcase)
+      shift = @alphabet.index(@key[position % @key.length])
+      @alphabet[(index + shift * direction)]
     end
   end
 end
