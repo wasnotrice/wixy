@@ -54,7 +54,7 @@ module Wixy
     # using this alphabet to encrypt or decrypt a message, your result
     # will be all uppercase.
     def self.AZ(options = {})
-      self.new ('A'..'Z'), {filters: [:upcase]}.merge(options)
+      self.new ('A'..'Z'), {:filters => [:upcase]}.merge(options)
     end
   end
 end
