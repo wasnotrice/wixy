@@ -19,7 +19,7 @@ describe "Vigenere" do
 
   load_examples("vigenere", "encrypt", "discard").each do |e|
     describe "'#{e['cleartext']}' -> '#{e['ciphertext']}'" do
-      let(:config) { create_config(:key => e['key']) }
+      let(:config) { create_config(key: e['key']) }
       let(:cleartext) { e['cleartext'] }
       let(:ciphertext) { e['ciphertext'] }
       let(:vigenere) { Vigenere.new(config) }
@@ -33,7 +33,7 @@ describe "Vigenere" do
 
   load_examples("vigenere", "encrypt", "preserve").each do |e|
     describe "'#{e['cleartext']}' -> '#{e['ciphertext']}'" do
-      let(:config) { create_config(:key => e['key'], :preserve => true) }
+      let(:config) { create_config(key: e['key'], preserve: true) }
       let(:cleartext) { e['cleartext'] }
       let(:ciphertext) { e['ciphertext'] }
       let(:vigenere) { Vigenere.new(config) }
