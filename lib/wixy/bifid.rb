@@ -1,4 +1,4 @@
-require_relative 'config'
+require 'wixy/config'
 
 module Wixy
   class Bifid

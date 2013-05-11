@@ -1,5 +1,5 @@
-require_relative 'config'
-require_relative 'alphabet'
+require 'wixy/config'
+require 'wixy/alphabet'
 
 module Wixy
   class Vigenere

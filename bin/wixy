@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'optparse'
 require 'ostruct'
-require_relative '../lib/wixy'
+require 'wixy'
 
 options = OpenStruct.new
 config = Wixy::Config.new

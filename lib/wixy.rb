@@ -1,8 +1,8 @@
-require_relative 'wixy/version'
-require_relative 'wixy/config'
-require_relative 'wixy/vigenere'
-require_relative 'wixy/caesar'
-require_relative 'wixy/bifid'
+require 'wixy/version'
+require 'wixy/config'
+require 'wixy/vigenere'
+require 'wixy/caesar'
+require 'wixy/bifid'
 
 module Wixy
   def self.encrypt(text, config = Config.new)
