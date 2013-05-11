@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   s.executables << 'wixy'
   s.add_development_dependency 'rspec', '~> 2.0'
   s.add_development_dependency 'guard', '~> 1.8'
+  s.add_development_dependency 'guard-rspec', '~> 2.6'
 end
