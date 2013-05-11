@@ -10,12 +10,12 @@ module Wixy
     end
 
     def encrypt(text)
-      shift = lambda { |index, offset| index + offset }
+      shift = -> index, offset { index + offset }
       solve text, shift
     end
 
     def decrypt(text)
-      shift = lambda { |index, offset| index - offset }
+      shift = -> index, offset { index - offset }
       solve text, shift
     end
 
