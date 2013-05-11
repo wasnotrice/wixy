@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.homepage          = 'http://rubygems.org/gems/wixy'
   s.rubyforge_project = 'wixy'
 
-  s.platform          = Gem::Platform::CURRENT
   s.require_paths     = ['lib']
   s.files             = `git ls-files lib`.split("\n") + ['LICENSE']
   s.test_files        = `git ls-files spec`.split("\n")
