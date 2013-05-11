@@ -5,7 +5,7 @@ module Wixy
   class Caesar
     def initialize(config = Config.new)
       @text_alphabet = Alphabet.AZ
-      @cipher_alphabet = Alphabet.AZ shift: config.shift
+      @cipher_alphabet = Alphabet.AZ :shift => config.shift
     end
 
     def encrypt(text)
