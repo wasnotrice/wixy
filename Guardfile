@@ -2,7 +2,7 @@
 # More info at https://github.com/guard/guard#readme
 
 guard 'rspec' do
-  watch(%r{^spec/.+examples\.yaml$}) { "spec" }
+  watch(%r{^spec/.+example.*\.yaml$}) { "spec" }
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+/)*(.*).rb$})     { |m| "spec/#{m[2]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
