@@ -25,7 +25,7 @@ module Wixy
     end
 
     def solve(text, shift)
-      result = solve_portion(text.chars, 0, shift).reverse
+      result = solve_portion(text.chars.to_a, 0, shift).reverse
       discard_or_not(result).join
     end
 
