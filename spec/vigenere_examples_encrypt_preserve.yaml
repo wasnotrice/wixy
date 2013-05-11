@@ -1,0 +1,17 @@
+---
+-
+  ciphertext: "`~!@#$%^I&*()_-=+|]}[{S;:/?>.,<'\\\""
+  cleartext: "`~!@#$%^d&*()_-=+|]}[{e;:/?>.,<'\\\""
+  key: fortification
+-
+  cleartext:  "123456789"
+  ciphertext: "123456789"
+  key: fortification
+-
+  cleartext:  ""
+  ciphertext: ""
+  key: fortification
+-
+  cleartext: "Forsaking monastic tradition, twelve jovial friars gave up their vocation for a questionable existence on the flying trapeze."
+  ciphertext: "KCILIPQPG FWBNXHZV BWIFIMQCA, YKVEDJ RQVBIZ SWWRKA LIXE NX HUJWI OWHIVIHV TBW O HNMXBKOGIPYJ SOBAYMPCX WB GMS WEGNVI TKIDRES."
+  key: fortification

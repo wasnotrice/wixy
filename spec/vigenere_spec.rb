@@ -30,4 +30,18 @@ describe "Vigenere" do
       end
     end
   end
+
+  load_examples("vigenere", "encrypt", "preserve").each do |e|
+    describe "'#{e['cleartext']}' -> '#{e['ciphertext']}'" do
+      let(:config) { create_config(key: e['key'], preserve: true) }
+      let(:cleartext) { e['cleartext'] }
+      let(:ciphertext) { e['ciphertext'] }
+      let(:vigenere) { Vigenere.new(config) }
+
+      it "encrypts" do
+        result = vigenere.encrypt e['cleartext']
+        expect(result).to eq(e['ciphertext'])
+      end
+    end
+  end
 end
