@@ -5,15 +5,13 @@ describe "Wixy" do
   let(:ciphertext) { 'IRUVDNLQJPRQDVWLFWUDGLWLRQWZHOYHMRYLDOIULDUVJDYHXSWKHLUYRFDWLRQIRUDTXHVWLRQDEOHHALVWHQFHRQWKHIOBLQJWUDSHCH' }
 
   describe "as a library" do
-    let(:config) { Wixy::Config.new }
-
     it "encrypts" do
-      result = Wixy.encrypt plaintext, config
+      result = Wixy.encrypt plaintext
       expect(result).to eq(ciphertext)
     end
 
     it "decrypts" do
-      result = Wixy.decrypt ciphertext, config
+      result = Wixy.decrypt ciphertext
       expect(result).to eq(plaintext)
     end
   end

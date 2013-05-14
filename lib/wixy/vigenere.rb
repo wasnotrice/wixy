@@ -1,12 +1,12 @@
-require 'wixy/config'
 require 'wixy/alphabet'
 
 module Wixy
   class Vigenere
-    def initialize(config = Config.new)
-      @config = config
-      @alphabet = Alphabet.AZ
-      @key = @alphabet.sanitize(config.key)
+    def initialize(options={})
+      @preserve = options[:preserve] || false
+      @alphabet = options[:alphabet] || Alphabet.AZ
+      key = options[:key] || "FORTIFICATION"
+      @key = @alphabet.sanitize(key)
     end
 
     def encrypt(text)
@@ -21,7 +21,7 @@ module Wixy
 
     private
     def preserve?
-      @config.preserve
+      @preserve
     end
 
     def solve(text, shift)

@@ -3,9 +3,9 @@ require 'wixy/alphabet'
 
 module Wixy
   class Caesar
-    def initialize(config = Config.new)
+    def initialize(options = {})
       @text_alphabet = Alphabet.AZ
-      @cipher_alphabet = Alphabet.AZ shift: config.shift
+      @cipher_alphabet = Alphabet.AZ shift: (options[:shift] || 3)
     end
 
     def encrypt(text)

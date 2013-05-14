@@ -3,41 +3,41 @@ require 'optparse'
 require 'ostruct'
 require 'wixy'
 
-options = OpenStruct.new
-config = Wixy::Config.new
+cli_options  = {}
+wixy_options = {}
 
 # Defaults
-options.encrypt = true
-options.decrypt = false
-options.mode = :encrypt
-config.cipher = :caesar
-config.shift = 3
+cli_options[:encrypt] = true
+cli_options[:decrypt] = false
+cli_options[:mode]    = :encrypt
+wixy_options[:cipher] = :caesar
+wixy_options[:shift]  = 3
 
 begin
 parser = OptionParser.new do |opts|
   opts.banner = "Usage: #{__FILE__} [options] TEXT"
   opts.on("-e", "--encrypt", "Encrypt text (default)") do |e|
-    options.encrypt = e
+    cli_options[:encrypt] = e
   end
 
-  ciphers = config.ciphers
+  ciphers = Wixy::Config.new.ciphers
   cipher_names = ciphers
     .map {|c| "  - [#{c[0]}]#{c[1,c.length-1]}"}
 
   opts.on("-c", "--cipher CIPHER", ciphers.map(&:to_sym), "Use CIPHER", *cipher_names) do |c|
-    config.cipher = c
+    wixy_options[:cipher] = c
   end
 
   opts.on("-d", "--decrypt", "Decrypt text") do |d|
-    options.decrypt = d
+    cli_options[:decrypt] = d
   end
 
   opts.on("-k", "--key KEY", "Use KEY to create cipher") do |k|
-    config.key = k
+    wixy_options[:key] = k
   end
 
   opts.on("-s", "--shift [INTEGER]", Integer, "Alphabet shift") do |s|
-    config.shift = s
+    wixy_options[:shift] = s
   end
 
   opts.on_tail("-h", "--help", "Show this message") do
@@ -56,6 +56,6 @@ end
 
 text = ARGV.pop
 abort(parser) unless text
-options.mode = :decrypt if options.decrypt
-result = Wixy.public_send(options.mode, text, config)
+cli_options[:mode] = :decrypt if cli_options[:decrypt]
+result = Wixy.public_send(cli_options[:mode], text, wixy_options)
 puts result
