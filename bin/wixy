@@ -20,7 +20,7 @@ parser = OptionParser.new do |opts|
     cli_options[:encrypt] = e
   end
 
-  ciphers = Wixy::Config.new.ciphers
+  ciphers = Wixy::Ciphers.all
   cipher_names = ciphers
     .map {|c| "  - [#{c[0]}]#{c[1,c.length-1]}"}
 
@@ -51,6 +51,7 @@ parser = OptionParser.new do |opts|
   end
 end.parse!
 rescue => e
+  puts e.backtrace
   abort e.message
 end
 

@@ -1,4 +1,3 @@
-require 'wixy/config'
 require 'wixy/alphabet'
 
 module Wixy

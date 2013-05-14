@@ -1,5 +1,3 @@
-require 'wixy/config'
-
 module Wixy
   class Bifid
     def encrypt(text)

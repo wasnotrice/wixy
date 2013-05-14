@@ -1,5 +1,5 @@
 require 'wixy/version'
-require 'wixy/config'
+require 'wixy/ciphers'
 require 'wixy/vigenere'
 require 'wixy/caesar'
 require 'wixy/bifid'
